@@ -1,0 +1,84 @@
+digraph {
+	graph [newrank=false,
+		rankdir=TB,
+		splines=ortho
+	];
+	node [label="\N"];
+	subgraph "clustercloud (3)" {
+		graph [label="cloud (3)",
+			labeljust=r,
+			labelloc=b,
+			style=rounded
+		];
+		fwhm2	[label="fwhm2
+~
+Deterministic",
+			shape=box];
+		tau_total	[label="tau_total
+~
+Deterministic",
+			shape=box];
+		fwhm2_norm	[label="fwhm2_norm
+~
+Gamma",
+			shape=ellipse];
+		Bparallel_norm	[label="Bparallel_norm
+~
+Beta",
+			shape=ellipse];
+		Bparallel	[label="Bparallel
+~
+Deterministic",
+			shape=box];
+		tau_total_norm	[label="tau_total_norm
+~
+HalfNormal",
+			shape=ellipse];
+		velocity_norm	[label="velocity_norm
+~
+Beta",
+			shape=ellipse];
+		velocity	[label="velocity
+~
+Deterministic",
+			shape=box];
+	}
+	subgraph cluster200 {
+		graph [label=200,
+			labeljust=r,
+			labelloc=b,
+			style=rounded
+		];
+		V	[label="V
+~
+Normal",
+			shape=ellipse,
+			style=filled];
+		I	[label="I
+~
+Normal",
+			shape=ellipse,
+			style=filled];
+	}
+	fwhm2 -> V;
+	fwhm2 -> I;
+	tau_total -> V;
+	tau_total -> I;
+	fwhm2_norm -> fwhm2	[minlen=1];
+	Bparallel_norm -> Bparallel	[minlen=1];
+	Bparallel -> V;
+	tau_total_norm -> tau_total	[minlen=1];
+	velocity_norm -> velocity	[minlen=1];
+	velocity -> V;
+	velocity -> I;
+	leakage_fraction_norm	[label="leakage_fraction_norm
+~
+HalfNormal",
+		shape=ellipse];
+	leakage_fraction	[label="leakage_fraction
+~
+Deterministic",
+		shape=box];
+	leakage_fraction_norm -> leakage_fraction	[minlen=1];
+	leakage_fraction -> V;
+}

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "versioneer[toml]==0.29"]
+build-backend = "setuptools.build_meta"
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "bayes_zeeman_hi/_version.py"
+versionfile_build = "bayes_zeeman_hi/_version.py"
+tag_prefix = "v"
+
+[project]
+name = "bayes_zeeman_hi"
+description = "A Bayesian Model of 21-cm Zeeman Spectroscopy"
+authors = [
+  { name="Trey Wenger", email="tvwenger@gmail.com" },
+]
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/tvwenger/bayes_zeeman_hi"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
